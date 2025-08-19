@@ -11,11 +11,12 @@ async function allUsersGet(req, res, next) {
 }
 
 async function newUserPost(req, res, next) {
+    const { name, email } = req.body
     try {
         const newUser = await prisma.user.create({
             data: {
-                email: req.body.email,
-                name: req.body.name
+                email: email,
+                name: name,
             }
         })
         res.json(newUser);
@@ -24,7 +25,22 @@ async function newUserPost(req, res, next) {
     }
 }
 
+async function deleteUserPost(req, res ,next) {
+    const { userid } = req.params;
+    try {
+        const deleteUser = await prisma.user.delete({
+            where: {
+                id: (parseInt(userid))
+            }
+        })
+        res.json(deleteUser);
+    } catch (err) {
+        next(err)
+    }
+}
+
 module.exports = {
     allUsersGet,
     newUserPost,
+    deleteUserPost
 }

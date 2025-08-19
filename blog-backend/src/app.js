@@ -7,6 +7,16 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+app.use((req, res, next) => {
+    if (req.body) {
+        const { published } = req.body;
+        if ( published ) {
+            (published === 'true') ? req.body.published = true : req.body.published = false;
+        }
+    }
+    next();
+})
+
 app.use("/users", usersRouter);
 app.use("/posts", postsRouter);
 
