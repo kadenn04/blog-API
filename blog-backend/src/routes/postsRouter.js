@@ -11,7 +11,7 @@ postsRouter.param("postId", postsController.parseIds);
 
 postsRouter.post("/:postId/edit", postsController.editPostPost);
 postsRouter.post("/:postId/delete", postsController.deletePostPost);
-postsRouter.post("/:postId", postsController.postGet);
+postsRouter.get("/:postId", postsController.postGet);
 
 postsRouter.post("/:postId/comments/:commentId/delete", commentsController.deleteCommentPost)
 postsRouter.post("/:postId/comments/:commentId/edit", commentsController.editCommentPost)

@@ -46,6 +46,9 @@ async function postGet(req, res, next) {
         const post = await prisma.post.findUnique({
             where: {
                 id: postId,
+            }, 
+            include: {
+                comments: true,
             }
         })
         res.json(post);
