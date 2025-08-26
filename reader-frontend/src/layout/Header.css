@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    align-content: center;
+}
+
+.back-arrow {
+  height: 16px;
+  width: 16px;
+  filter: invert(100%) sepia(74%) saturate(2%) hue-rotate(115deg) brightness(111%) contrast(100%);
+  padding-left: 16px;
+  padding-right: 8px;
+  padding-bottom: 13px;
+  padding-top: 13px;
+  border-radius: 12px;
+  transition: background-color .3s ease-out 0s;
+  background-color: rgba(128, 128, 128, 0.171);
+  
+}
+
+.back-arrow:hover{
+    background-color: rgba(156, 154, 154, 0.589);
+}
+
+.go-back{
+    cursor: pointer;
+}
+
+.title-text {
+    font-size: 30px;
+    font-weight: bold;
+}

@@ -10,8 +10,8 @@ const routes = [
     element: <Layout/>,
     errorElement: <ErrorPage />,
     children: [
-      {index: true, element: <FrontPage/>},
-      {path: "post/:postId", element: <PostPage/>}
+      {index: true, element: <FrontPage/>, handle: {title: "Home"}},
+      {path: "post/:postId", element: <PostPage/>, handle: {title: "Post"}}
     ]
   },
 ]
