@@ -1,7 +1,7 @@
-import Post from "./Post.jsx"
+import PostPage from "./PostPage.jsx"
 import FrontPage from "./FrontPage.jsx"
 import ErrorPage from './ErrorPage.jsx';
-import Layout from "./Layout.jsx"
+import Layout from "../layout/Layout.jsx"
 
 
 const routes = [
@@ -11,7 +11,7 @@ const routes = [
     errorElement: <ErrorPage />,
     children: [
       {index: true, element: <FrontPage/>},
-      {path: "post/:postId", element: <Post/>}
+      {path: "post/:postId", element: <PostPage/>}
     ]
   },
 ]

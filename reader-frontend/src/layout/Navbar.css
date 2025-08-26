@@ -1,0 +1,58 @@
+
+
+.links {
+    display: grid;
+    justify-items: center;
+    gap: 24px;
+}
+
+.icon-wrapper {
+  position: relative; /* so .icontext is positioned relative to this */
+  display: inline-block;
+}
+
+.icon {
+  height: 36px;
+  width: 36px;
+  filter: invert(32%) sepia(0%) saturate(1518%) hue-rotate(232deg) brightness(96%) contrast(91%);
+  padding: 10px;
+  border-radius: 12px;
+  transition: background-color .3s ease-out 0s;
+}
+
+.icon:hover {
+  filter: invert(60%) sepia(0%) saturate(0%) hue-rotate(334deg) brightness(92%) contrast(90%);
+  background-color: rgba(128, 128, 128, 0.199);
+}
+
+.icontext {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 120%; /* push to the right of icon */
+  transform: translateY(-50%);
+  background: #333;
+  color: rgba(255, 255, 255, 0.616);
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none; /* prevent interfering with hover */
+}
+
+.icon-wrapper:hover .icontext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo-symbol {
+    color: rgb(26, 95, 26);
+    filter: invert(22%) sepia(16%) saturate(5612%) hue-rotate(89deg) brightness(99%) contrast(80%);
+}
