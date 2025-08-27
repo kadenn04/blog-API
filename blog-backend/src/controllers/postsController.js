@@ -49,6 +49,7 @@ async function postGet(req, res, next) {
             }, 
             include: {
                 comments: true,
+                tags: true
             }
         })
         res.json(post);

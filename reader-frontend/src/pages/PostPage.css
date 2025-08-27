@@ -21,6 +21,15 @@
     font-weight: 550;
 }
 
+.tag-links {
+    text-decoration: none;
+    color: rgb(141, 141, 141);
+}
+
+.tag-links:hover {
+    text-decoration: underline;
+}
+
 #post-title {
     color: white;
     font-weight: bold;

@@ -21,13 +21,25 @@ function formatDateTime(datetime) {
         year: "numeric"
     });
     
-    console.log({formatted});
     const [monthDay, year, time] = formatted.split(", ");
     const [month, day] = monthDay.split(" ");
     const [hourMinute, ampm] = time.split(" ")
 
 
     return (`${hourMinute} ${ampm}, ${month.toUpperCase()} ${day}, ${year}`);
+}
+
+function formatTags(tags) {
+    if (!tags) {
+        return <></>
+    } else {
+        return(
+            <>
+                {tags.map((tag) => {
+                    return <span key={tag.id}><a href="/" className="tag-links"> {tag.name} </a> </span>
+                })}
+            </>
+    )}
 }
 
 function Post() {
@@ -56,10 +68,12 @@ function Post() {
         <div id="page-content">
             <div id="post-header">
                 <div id="post-info">
-                    <div id="post-tags">LIFE, MUSIC</div>
+                    <div id="post-tags">
+                        {formatTags(post.tags)}
+                    </div>
                     <div id="post-date">
                         {formatDateTime(post.createdAt)}
-                        {post.updatedAt && (post.updatedAt != post.createdAt) ? ", Edited " + formatDateTime(post.updatedAt):null}    
+                        {post.updatedAt && (post.updatedAt != post.createdAt) ? " • Edited " + formatDateTime(post.updatedAt):null}    
                     </div>
                 </div>
                 <div id="post-title"> {post.title} </div>

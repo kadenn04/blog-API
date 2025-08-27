@@ -4,6 +4,7 @@ const postsRouter = require("./routes/postsRouter");
 const usersRouter = require("./routes/usersRouter");
 const signupRouter = require("./routes/signupRouter");
 const loginRouter = require("./routes/loginRouter");
+const tagsRouter = require("./routes/tagsRouter");
 require("dotenv").config();
 
 const cors = require('cors');
@@ -20,6 +21,7 @@ app.use("/users", usersRouter);
 app.use("/posts", postsRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
+app.use("/tags", tagsRouter);
 
 const PORT = parseInt(process.env.BACKEND_PORT);
 app.listen(PORT, () => {
