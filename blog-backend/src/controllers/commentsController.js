@@ -1,30 +1,48 @@
 const { PrismaClient } = require('../generated/prisma');
 const prisma = new PrismaClient();
 
-async function postCommentsGet (req, res, next) {
-    const { postId } = req.params; 
+async function commentsGet (req, res, next) {
+    const { postId, noteId } = req.params; 
     try {
-        const comments = await prisma.comment.findMany({
-            where: {postId: postId},
+        if (postId) {
+            const comments = await prisma.comment.findMany({
+                where: {postId: postId},
+            })
+        } else {
+            const comments = await prisma.comment.findMany({
+            where: {noteId: noteId},
         })
+        }
         res.json(comments);
     } catch(err) {
         next(err);
     }
 }
 
-async function postCommentPost (req, res, next) {
-    const { postId } = req.params; 
+async function commentPost (req, res, next) {
+    const { postId, noteId } = req.params; 
     const { name, email, content } = req.body;
     try {
-        const comment = await prisma.comment.create({
+        let comment;
+        if (postId) {
+            comment = await prisma.comment.create({
+                data: {
+                    name: name,
+                    email: email,
+                    content: content,
+                    postId: postId,
+                }
+            })
+        } else {
+            comment = await prisma.comment.create({
             data: {
                 name: name,
                 email: email,
                 content: content,
-                postId: postId,
+                noteId: noteId,
             }
-        })
+            })
+        }
         res.json(comment);
     } catch(err) {
         next(err);
@@ -65,8 +83,8 @@ async function editCommentPost(req, res, next) {
 }
 
 module.exports = {
-    postCommentsGet,
-    postCommentPost,
+    commentsGet,
+    commentPost,
     deleteCommentPost,
     editCommentPost
 }

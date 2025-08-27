@@ -15,8 +15,8 @@ postsRouter.get("/:postId", postsController.postGet);
 
 postsRouter.post("/:postId/comments/:commentId/delete", commentsController.deleteCommentPost)
 postsRouter.post("/:postId/comments/:commentId/edit", commentsController.editCommentPost)
-postsRouter.post("/:postId/comments/new", commentsController.postCommentPost);
-postsRouter.get("/:postId/comments", commentsController.postCommentsGet);
+postsRouter.post("/:postId/comments/new", commentsController.commentPost);
+postsRouter.get("/:postId/comments", commentsController.commentsGet);
 
 
 module.exports = postsRouter;
