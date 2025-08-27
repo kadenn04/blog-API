@@ -153,6 +153,11 @@ exports.Prisma.CommentScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.TagScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -173,7 +178,8 @@ exports.Prisma.ModelName = {
   Post: 'Post',
   Profile: 'Profile',
   User: 'User',
-  Comment: 'Comment'
+  Comment: 'Comment',
+  Tag: 'Tag'
 };
 
 /**
