@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
+import "./PostPage.css"
 
 async function getPost(postId) {
     const response = await fetch(`http://localhost:3001/posts/${postId}`, {mode: 'cors'});
@@ -9,9 +10,29 @@ async function getPost(postId) {
     return response.json();
 }
 
+function formatDateTime(datetime) {
+    const date = new Date(datetime);
+    const formatted = date.toLocaleString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+    });
+    
+    console.log({formatted});
+    const [monthDay, year, time] = formatted.split(", ");
+    const [month, day] = monthDay.split(" ");
+    const [hourMinute, ampm] = time.split(" ")
+
+
+    return (`${hourMinute} ${ampm}, ${month.toUpperCase()} ${day}, ${year}`);
+}
+
 function Post() {
     const { postId } = useParams();
-    const [post, setPost] = useState({})
+    const [post, setPost] = useState(null)
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -32,10 +53,24 @@ function Post() {
     if (!post) return <p> This post does not exist </p>
 
     return (
-    <>
-        <h1>{post.title}</h1>
-        <p>{post.content}</p>
-    </>)
+        <div id="page-content">
+            <div id="post-header">
+                <div id="post-info">
+                    <div id="post-tags">LIFE, MUSIC</div>
+                    <div id="post-date">
+                        {formatDateTime(post.createdAt)}
+                        {post.updatedAt && (post.updatedAt != post.createdAt) ? ", Edited " + formatDateTime(post.updatedAt):null}    
+                    </div>
+                </div>
+                <div id="post-title"> {post.title} </div>
+                <div id="post-subtitle"> on starting again and again</div>
+                <div id="author">me!</div>
+            </div>
+            <div id="post-text">
+                <p>{post.content}</p>
+            </div>
+        </div> 
+    )
 }
 
 export default Post;

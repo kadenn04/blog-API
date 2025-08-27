@@ -65,4 +65,11 @@ html, body, .app-layout, #root {
   box-sizing: border-box;
   margin: 0px;
   padding: 10px;
+
+  display: grid;
+  grid-template-columns: 1fr 600px 1fr;
+}
+
+#page-content {
+  grid-column: 2/3
 }

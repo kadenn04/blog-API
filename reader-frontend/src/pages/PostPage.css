@@ -1,0 +1,32 @@
+#page-content {
+    display: flex;
+    flex-direction: column;
+}
+
+#post-header {
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 10px;
+    padding-bottom: 15px;
+
+    border-bottom: solid 1px rgb(99, 99, 99);
+}
+
+#post-info {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(141, 141, 141);
+    font-size: 13px;
+    font-weight: 550;
+}
+
+#post-title {
+    color: white;
+    font-weight: bold;
+    font-size: 45px;
+}
+
+#post-subtitle {
+    color: rgb(141, 141, 141);
+}
