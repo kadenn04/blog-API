@@ -4,6 +4,7 @@ const tagsRouter = Router();
 
 tagsRouter.post("/new", tagsController.newTagPost)
 tagsRouter.post("/:tagId/addPost", tagsController.addPostToTag)
+tagsRouter.post("/:tagId/addNote", tagsController.addNoteToTag)
 tagsRouter.get("/", tagsController.allTagsGet)
 
 

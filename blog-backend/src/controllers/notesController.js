@@ -20,6 +20,7 @@ async function allNotesGet(req, res, next) {
         const allNotes = await prisma.note.findMany(
             {include: {
                 comments: true,
+                tags: true,
             }}
         );
         res.status(200).json(allNotes);

@@ -17,7 +17,11 @@ function parseIds(req, res, next) {
 
 async function allPostsGet(req, res, next) {
     try {
-        const allPosts = await prisma.post.findMany();
+        const allPosts = await prisma.post.findMany({
+            include: {
+                tags: true,
+            }
+        });
         res.status(200).json(allPosts);
     } catch(err) {
         next(err)
@@ -60,7 +64,7 @@ async function postGet(req, res, next) {
 
 async function editPostPost(req, res, next) {
     const { postId } = req.params;
-    const { title, content, published } = req.body;
+    const { title, content, published, subtitle } = req.body;
     try {
         const updatedPost = await prisma.post.update({
             where: {
@@ -68,6 +72,7 @@ async function editPostPost(req, res, next) {
             },
             data: {
                 title: title,
+                subtitle: subtitle,
                 content: content,
                 published: published
             }
